@@ -5,10 +5,15 @@ using UnityEngine;
 public class Enemy_PsychoCentipedeSegment : MonoBehaviour
 {
 
+    public int segNum = 0;
+    public float segPhi = 0.01f;
     public float previousDist = 1f;
     public GameObject previous = null;
 
-    float rotSpeed = 1f;
+    float oscilloAmp = 0.5f;
+    float freq = 2f;
+    float rotSpeed = 1.5f;
+    Vector3 globalZ = new Vector3(0f, 1f, 0f);
 
     // Start is called before the first frame update
     void Start()
@@ -37,9 +42,17 @@ public class Enemy_PsychoCentipedeSegment : MonoBehaviour
 
     void ProgressiveMove()
     {
-        Vector3 targetPos = previous.transform.position - previous.transform.forward * previousDist;
+        float oscilloAng = 2f * Mathf.PI * freq * (Time.time + segPhi * segNum);
+        //float oscilloAng = 2f * Mathf.PI * freq * Time.time;
+        //Vector3 oscillo = transform.up * oscilloAmp * Mathf.Sin(oscilloAng); ;
+        float oscillo = oscilloAmp * Mathf.Sin(oscilloAng); ;
+
+        //Vector3 targetPos = previous.transform.position - previous.transform.forward * previousDist + oscillo;
+        Vector3 targetPos = previous.transform.position - previous.transform.forward * previousDist + previous.transform.up * oscillo;
         Vector3 v = targetPos - transform.position;
 
-        transform.position += 2 * v * Time.deltaTime;
+        transform.position += 10 * v * Time.deltaTime;
+
+        //transform.position += previous.transform.up * oscillo * Time.deltaTime;
     }
 }
