@@ -15,6 +15,9 @@ public class Enemy_PsychoCentipedeSegment : MonoBehaviour
     float rotSpeed = 1.5f;
     Vector3 globalZ = new Vector3(0f, 1f, 0f);
 
+    const float RIGID_FACTOR = 1f;
+    const float ELASTIC_FACTOR = 20f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,8 +53,12 @@ public class Enemy_PsychoCentipedeSegment : MonoBehaviour
         //Vector3 targetPos = previous.transform.position - previous.transform.forward * previousDist + oscillo;
         Vector3 targetPos = previous.transform.position - previous.transform.forward * previousDist + previous.transform.up * oscillo;
         Vector3 v = targetPos - transform.position;
+        float norm = v.magnitude;
+        float coeff = RIGID_FACTOR + ELASTIC_FACTOR * norm;
+        v.Normalize();
 
-        transform.position += 10 * v * Time.deltaTime;
+        if (!float.IsNaN(coeff) && !(coeff == float.PositiveInfinity))
+            transform.position += coeff * v * Time.deltaTime;
 
         //transform.position += previous.transform.up * oscillo * Time.deltaTime;
     }
