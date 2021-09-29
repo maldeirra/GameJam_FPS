@@ -158,7 +158,7 @@ public class Enemy_PsychoCentipedeHead : MonoBehaviour
 
     void StateVomiting()
     {
-        Instantiate(spawn, transform.position, transform.rotation);
+        //Instantiate(spawn, transform.position, transform.rotation);
         ChangeState(States.TURNING);
     }
 
