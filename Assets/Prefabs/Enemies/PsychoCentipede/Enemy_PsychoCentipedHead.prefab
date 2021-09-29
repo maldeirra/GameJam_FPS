@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4018983275773687541}
   - component: {fileID: -8930774919340443164}
   - component: {fileID: 583199700528207574}
+  - component: {fileID: -6623445662983297508}
   m_Layer: 0
   m_Name: Enemy_PsychoCentipedHead
   m_TagString: Untagged
@@ -81,6 +82,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-6623445662983297508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4018983275773687539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235ba14f47c0d9e4a821f6ba3489daae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 7257932751001640304, guid: ed08fac8280d3a343be4bc0baf030907, type: 3}
+  healph: 10
 --- !u!1001 &7753954538653652889
 PrefabInstance:
   m_ObjectHideFlags: 0

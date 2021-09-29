@@ -5,9 +5,13 @@ using UnityEngine;
 public class WeaponBehavior : MonoBehaviour
 {
     public float autoDelay = 0.1f;
+    public float muzzleFlashTime = 0.2f;
+    public float bulletForce = 500f;
+
+    public GameObject bullet;
     public GameObject muzzleFlash;
 
-    private AudioSource audioSource;
+    AudioSource audioSource;
     bool shootLocked = false;
     bool shootSignal = false;
     Transform visualPart;
@@ -66,7 +70,8 @@ public class WeaponBehavior : MonoBehaviour
         // Recul
         visualPart.transform.localPosition = reculPos;
 
-        // Petite explosion au niveau du canon
+        // Balle + petite explosion au niveau du canon
+        AddBullet();
         AddCanonExplosion();
 
         Invoke("ReleaseNewBullet", autoDelay);
@@ -85,6 +90,18 @@ public class WeaponBehavior : MonoBehaviour
     void AddCanonExplosion()
     {
         GameObject flash = Instantiate(muzzleFlash, muzzlePart.position, muzzlePart.rotation);
-        Destroy(flash, 0.04f);
+        
+        flash.transform.SetParent(muzzlePart);
+
+        Destroy(flash, muzzleFlashTime);
+    }
+
+    void AddBullet()
+    {
+        GameObject newBullet = Instantiate(bullet, muzzlePart.position, muzzlePart.rotation);
+
+        Rigidbody rb = newBullet.GetComponent<Rigidbody>();
+
+        rb.AddForce(newBullet.transform.forward * bulletForce);
     }
 }

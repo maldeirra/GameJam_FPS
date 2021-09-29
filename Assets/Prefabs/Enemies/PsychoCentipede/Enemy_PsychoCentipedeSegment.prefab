@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7661408940768469295}
   - component: {fileID: 7661408940768469283}
+  - component: {fileID: -5635605115969276063}
+  - component: {fileID: 178215967001680210}
   m_Layer: 0
   m_Name: Enemy_PsychoCentipedeSegment
   m_TagString: Untagged
@@ -48,6 +50,33 @@ MonoBehaviour:
   segPhi: 0.05
   previousDist: 0.5
   previous: {fileID: 0}
+--- !u!114 &-5635605115969276063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7661408940768469280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235ba14f47c0d9e4a821f6ba3489daae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 7257932751001640304, guid: ed08fac8280d3a343be4bc0baf030907, type: 3}
+  healph: 3
+--- !u!135 &178215967001680210
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7661408940768469280}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8547383786615662955
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,8 +167,8 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8547383786615662955}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}

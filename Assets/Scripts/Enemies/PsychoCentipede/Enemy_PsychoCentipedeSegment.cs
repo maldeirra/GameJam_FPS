@@ -26,8 +26,18 @@ public class Enemy_PsychoCentipedeSegment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckIntegrity();
         ProgressiveLookAt();
         ProgressiveMove();
+    }
+
+    void CheckIntegrity()
+    {
+        if (!previous)
+        {
+            Damageable damageable = GetComponent<Damageable>();
+            damageable?.Explode();
+        }
     }
 
     void ProgressiveLookAt()
